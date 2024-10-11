@@ -138,7 +138,7 @@ void threeSort(int& a, int& b, int& c)
   }
 }
 
-/** @brief swap two given integer values in memory
+/** @brief swap two given character values in memory
  *
  * Given two character values, swap their locations
  * in memory.  We can do this because the parameters
@@ -181,6 +181,71 @@ void swap(char& a, char& b)
  *    value in b.
  */
 void threeSort(char& a, char& b, char& c)
+{
+  // swap a, b if out of order, guarantees larger of the two is now in b
+  if (a > b)
+  {
+    swap(a, b);
+  }
+
+  // swap b, c if out of order, guarantees that largest values has been
+  // now bubbled to c
+  if (b > c)
+  {
+    swap(b, c);
+  }
+
+  // it is still possible after this "bubble pass" that a and b are out of
+  // order, so check and swap them if needed
+  if (a > b)
+  {
+    swap(a, b);
+  }
+}
+
+/** @brief swap two given string values in memory
+ *
+ * Given two string values, swap their locations
+ * in memory.  We can do this because the parameters
+ * are passed by reference, so when we modify them
+ * in this function, we are modifying the original
+ * values passed to us.
+ *
+ * @param a A reference to a value in memory to be swapped with
+ *    some other value.
+ * @param b A second reference to a value in memory to be swapped.
+ *
+ * @returns void This is a void function.  Our work is returned
+ *    implicitly by swapping the values in the referenced memory
+ *    locations a and b.
+ */
+void swap(string& a, string& b)
+{
+  // need to save a value temporarily so we can move things
+  // around successfully.
+  string temp = a;
+  a = b;
+  b = temp;
+}
+
+/** @brief sort three values in ascending order
+ *
+ * Given three string values, passed in by reference,
+ * cause the three values to be sorted in the
+ * variables with the smallest value in the first
+ * parameter a, the largest in the last c, and the
+ * in between one in b.
+ *
+ * @param a A reference to a value in memory to compared and sorted.
+ * @param b A reference to a value in memory to compared and sorted.
+ * @param c A reference to a value in memory to compared and sorted.
+ *
+ * @returns void This is a void function.  Our work is returned
+ *    implicitly by comparing and sorting the 3 values into
+ *    ascending order, smallest in a, largest in c and in between
+ *    value in b.
+ */
+void threeSort(string& a, string& b, string& c)
 {
   // swap a, b if out of order, guarantees larger of the two is now in b
   if (a > b)
